@@ -30,5 +30,12 @@ app.layout = html.Div([
                               labels={'team_1': "Team", 'team_1_runs': "Total Runs"})
             )
         ]),
+        # Tab 2: Match Outcomes
+        dcc.Tab(label='Match Outcomes', children=[
+            dcc.Graph(
+                id='match-outcomes',
+                figure=px.pie(df, names='match_category', title="Match Outcomes Distribution")
+            )
+        ]),
   ])
 ])
