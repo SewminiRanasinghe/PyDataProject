@@ -14,3 +14,21 @@ if not all(col in df.columns for col in required_columns):
     print("Error: The dataset does not contain the required columns. Please check your data preparation.")
     exit()
 
+# Initialize the Dash app
+app = Dash(__name__)
+
+#Layout
+app.layout = html.Div([
+    html.H1("Cricket World Cup Dashboard", style={'textAlign': 'center'}),
+    dcc.Tabs([
+        #Add Team Performance Tab
+        dcc.Tab(label='Team Performance', children=[
+            dcc.Graph(
+                id='team-performance',
+                figure=px.bar(df, x='team_1', y='team_1_runs', color='team_1',
+                              title="Runs Scored by Teams",
+                              labels={'team_1': "Team", 'team_1_runs': "Total Runs"})
+            )
+        ]),
+  ])
+])
