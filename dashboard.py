@@ -55,6 +55,16 @@ app.layout = html.Div([
                                       hover_name="host_country")
             )
         ]),
+
+        # Tab 5 : Performance Scatter
+        dcc.Tab(label='Performance Scatter', children=[
+            dcc.Graph(
+                id='scatter-performance',
+                figure=px.scatter(df, x='team_1_runs', y='team_1_wickets', color='team_1',
+                                  title="Runs vs Wickets by Teams",
+                                  labels={'team_1_runs': "Runs Scored", 'team_1_wickets': "Wickets Lost"})
+            )
+        ]),
   ])
 ])
 
