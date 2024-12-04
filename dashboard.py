@@ -37,5 +37,14 @@ app.layout = html.Div([
                 figure=px.pie(df, names='match_category', title="Match Outcomes Distribution")
             )
         ]),
+        # Tab 3: Yearly Trends
+        dcc.Tab(label='Yearly Trends', children=[
+            dcc.Graph(
+                id='yearly-trends',
+                figure=px.line(df, x='world_cup_year', y='team_1_runs', color='team_1',
+                               title="Runs Scored Over the Years",
+                               labels={'world_cup_year': "Year", 'team_1_runs': "Runs Scored"})
+            )
+        ]),
   ])
 ])
