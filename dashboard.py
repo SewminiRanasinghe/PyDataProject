@@ -46,6 +46,15 @@ app.layout = html.Div([
                                labels={'world_cup_year': "Year", 'team_1_runs': "Runs Scored"})
             )
         ]),
+        # Tab 4: Host Countries
+        dcc.Tab(label='Host Countries', children=[
+            dcc.Graph(
+                id='host-map',
+                figure=px.scatter_geo(df, locations="host_country", locationmode="country names",
+                                      title="World Cup Hosting Locations",
+                                      hover_name="host_country")
+            )
+        ]),
   ])
 ])
 
