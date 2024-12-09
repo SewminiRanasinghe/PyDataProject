@@ -3,9 +3,10 @@ import plotly.express as px
 from dash import dcc, html, Dash
 # Load the cricket dataset
 try:
-    df = pd.read_csv("processed_cricket_data.csv")  
+    df = pd.read_csv("processed_cricket_data.csv")
+  
 except FileNotFoundError:
-    print("Error: 'cleaned_cricket_data.csv' not found. Please ensure the file path is correct.")
+    print("Error: 'processed_cricket_data.csv' not found. Please ensure the file path is correct.")
     exit()
 
 # Check if the necessary columns exist
@@ -25,7 +26,7 @@ app.layout = html.Div([
         dcc.Tab(label='Team Performance', children=[
             dcc.Graph(
                 id='team-performance',
-                figure=px.bar(df, x='team_1', y='team_1_runs', color='team_1',
+                figure=px.histogram(df, x='team_1', y='team_1_runs', color='team_1',
                               title="Runs Scored by Teams",
                               labels={'team_1': "Team", 'team_1_runs': "Total Runs"})
             )
