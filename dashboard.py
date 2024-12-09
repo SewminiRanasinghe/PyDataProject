@@ -65,7 +65,18 @@ app.layout = html.Div([
                                   labels={'team_1_runs': "Runs Scored", 'team_1_wickets': "Wickets Lost"})
             )
         ]),
+
+        # Tab 6: Win Margin Analysis
+        dcc.Tab(label='Win Margins', children=[
+        dcc.Graph(
+                id='win-margins',
+                figure=px.histogram(df, x='result',
+                                    title="Win Margin Distribution",
+                                    labels={'result': "Win Margin"})
+            )
+        ]),
   ])
+  
 ])
 
 # Run the Dash app
