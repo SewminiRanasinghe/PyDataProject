@@ -47,17 +47,9 @@ app.layout = html.Div([
                                labels={'world_cup_year': "Year", 'team_1_runs': "Runs Scored"})
             )
         ]),
-        # Tab 4: Host Countries
-        dcc.Tab(label='Host Countries', children=[
-            dcc.Graph(
-                id='host-map',
-                figure=px.scatter_geo(df, locations="host_country", locationmode="country names",
-                                      title="World Cup Hosting Locations",
-                                      hover_name="host_country")
-            )
-        ]),
+        
 
-        # Tab 5 : Performance Scatter
+        # Tab 4 : Performance Scatter
         dcc.Tab(label='Performance Scatter', children=[
             dcc.Graph(
                 id='scatter-performance',
@@ -67,13 +59,22 @@ app.layout = html.Div([
             )
         ]),
 
-        # Tab 6: Win Margin Analysis
+        # Tab 5: Win Margin Analysis
         dcc.Tab(label='Win Margins', children=[
         dcc.Graph(
                 id='win-margins',
                 figure=px.histogram(df, x='result',
                                     title="Win Margin Distribution",
                                     labels={'result': "Win Margin"})
+            )
+        ]),
+        # Tab 6: Host Countries
+        dcc.Tab(label='Host Countries', children=[
+            dcc.Graph(
+                id='host-map',
+                figure=px.scatter_geo(df, locations="host_country", locationmode="country names",
+                                      title="World Cup Hosting Locations",
+                                      hover_name="host_country")
             )
         ]),
   ])
